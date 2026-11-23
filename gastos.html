@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gastos do mês</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="gastos.css">
+</head>
+<body>
+<main class="wrap" id="app">
+  <header class="hero">
+    <h1 id="month"></h1>
+    <p class="big" id="left"></p>
+    <p class="lead" id="lead"></p>
+    <div class="meter" id="meter" role="img" aria-label="Quanto do que sobrava já foi usado"><b id="fill"></b><div class="tick" id="tick"><span>hoje</span></div></div>
+    <p class="status" id="status"></p>
+    <div class="stats">
+      <div class="stat"><span>✓ Já pago</span><b id="paid"></b></div>
+      <div class="stat pend"><span>Falta pagar</span><b id="pend"></b></div>
+    </div>
+    <label class="limit">Salário do mês <input id="lim" type="number" min="0" step="50" inputmode="decimal"></label>
+  </header>
+
+  <section>
+    <div class="panel">
+      <div class="add" id="add">
+        <input id="d" placeholder="O que você comprou?" aria-label="Descrição" required maxlength="40">
+        <input id="v" type="number" min="0.01" step="0.01" placeholder="Valor" aria-label="Valor" inputmode="decimal" required>
+        <input id="dt" type="date" aria-label="Data" required>
+        <select id="st" aria-label="Situação do pagamento"><option value="1">Já foi pago</option><option value="0">Ainda pendente</option></select>
+        <button class="btn" type="button">Adicionar gasto</button>
+      </div>
+      <div class="head"><h2>Gastos do dia a dia</h2><span id="total"></span></div>
+      <ul id="list"></ul>
+      <div class="head"><h2>Gastos fixos</h2><span id="ftotal"></span></div>
+      <ul id="fixed"></ul>
+      <details>
+        <summary>Adicionar gasto fixo</summary>
+        <div class="fadd" id="fadd">
+          <input id="fd" placeholder="Nome do gasto fixo" aria-label="Nome do gasto fixo" required maxlength="40">
+          <input id="fv" type="number" min="0.01" step="0.01" placeholder="Valor" aria-label="Valor" inputmode="decimal" required>
+          <input id="fday" type="number" min="1" max="31" placeholder="Dia do mês" aria-label="Dia do mês" required>
+          <button class="btn" type="button">Salvar gasto fixo</button>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="panel inst">
+    <div class="head" style="margin-top:0"><h2>Parcelamentos</h2><span id="itot"></span></div>
+    <p class="note">Este bloco é só informativo: as parcelas não entram no cálculo do “ainda posso gastar”.</p>
+    <div class="iadd" id="iadd">
+      <input id="in" placeholder="O que está parcelado?" aria-label="O que está parcelado" required maxlength="40">
+      <input id="iv" type="number" min="0.01" step="0.01" placeholder="Valor da parcela" aria-label="Valor da parcela" inputmode="decimal" required>
+      <input id="it" type="number" min="1" step="1" placeholder="Total de parcelas" aria-label="Total de parcelas" required>
+      <input id="ip" type="number" min="0" step="1" placeholder="Já pagas" aria-label="Parcelas já pagas" required>
+      <button class="btn" type="button">Adicionar</button>
+    </div>
+    <div class="igrid" id="igrid"></div>
+  </section>
+</main>
+<script src="gastos.js"></script>
+</body>
+</html>
